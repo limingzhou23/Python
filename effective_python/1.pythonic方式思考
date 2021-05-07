@@ -1,0 +1,31 @@
+1.不要通过检索长度的方法判断somelist是否为[] 应采用 if not somelist
+同理 判断非空也要用 if somelist
+
+2.采用内联形式的否定词，不要把否定词放在整个表达式前面：
+if a is not b 而不是 if not a is b
+
+3.python3的str实例和python2的unicode实例都没有和特定的二进制编码形式相关联。
+ Unicode字符转换为二进制数据必须encode,二进制数据转换成Unicode字符，必须decode.
+ 编写python程序时，必须把编码和解码放在最外围，程序核心部分使用Unicode字符类型.
+
+4.python3需要编写接受str/bytes并总是返回str的方法
+          和    接受str/bytes并总是返回bytes的方法
+          使用函数：isinstance()
+          isinstance函数来判断一个对象是否是一个已知的类型，类似 type()。
+          isinstance() 与 type() 区别：
+             type() 不会认为子类是一种父类类型，不考虑继承关系。
+             isinstance() 会认为子类是一种父类类型，考虑继承关系。
+             如果要判断两个类型是否相同推荐使用 isinstance()。
+             
+5.内置的open函数获取了文件句柄，该句柄默认用UTF-8编码格式来操作。
+with open('/tmp/random.bin','w') as f:
+    f.write(os.urandom(10))                     #os.urandom(n)产生长度为n的一段随机byte
+在python3中会产生异常，因为python3给open函数添加了encoding参数，默认值是‘utf-8’
+系统要求开发者传入str，不接受包含二进制数据的bytes实例
+  因此必须用二进制写入模式 ‘wb’ 
+                二进制读取模式'rb' 
+                
+6.                
+                
+             
+             
